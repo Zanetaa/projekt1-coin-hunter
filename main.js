@@ -8,6 +8,8 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 // sem začni psát svůj program
 
+//počáteční skóre
+
 // Panáček do prostřed stránky
 
 /*function priNacteniStranky() {*/
@@ -16,7 +18,6 @@ let panacek= document.getElementById('panacek');
 panacek.style.left= '500px';
 panacek.style.top= '260px';
 
-/*}*/
 
 //Náhodné vygenerování mince /vygoogleno: http://www.mendoweb.be/blog/javascript-random-element-position/
 
@@ -37,3 +38,14 @@ window.onload = function() {
 	img.style.top = xy[0] + 'px';
 	img.style.left = xy[1] + 'px';
 }
+
+//podmínka, kdy se panáček dotkne mince
+
+/*if (panacek=Mince) {
+
+} */
+
+//ovládání panáčka
+
+//onkeydown="priStisknutiSipky(event)"
+
