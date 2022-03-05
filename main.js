@@ -10,9 +10,17 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 // Panáček do prostřed stránky
 
+function priNacteniStranky() {
+	
 let panacek= document.getElementById('panacek');
 panacek.style.left= '500px';
 panacek.style.top= '260px';
+
+}
+
+//Náhodné vygenerování mince
+
+
 
 
 
