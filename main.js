@@ -7,3 +7,12 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 
 // sem začni psát svůj program
+
+// Panáček do prostřed stránky
+
+let panacek= document.getElementById('panacek');
+panacek.style.left= '500px';
+panacek.style.top= '260px';
+
+
+
