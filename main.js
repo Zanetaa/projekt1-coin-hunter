@@ -169,3 +169,19 @@ function otestujKolizi() {
 		)
 }
 
+function PanacekChytneMinci() {
+if ((panacek.style.top === mince.style.top) && (panacek.style.left === mince.style.left)) {
+	console.log("Panacek chytil minci");
+	let skore = document.getElementById("score")
+	skore = skore +1;
+
+	novaMince()
+}	
+}
+
+/*function Vitez()
+	if (skore=5)
+	{
+		let vitez = document.getElementbyId('fanfara');
+		vitez.play();
+	}*/
