@@ -14,7 +14,7 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 
 /*function priNacteniStranky() {*/
 
-let panacek= document.getElementById('panacek');
+/*let panacek= document.getElementById('panacek');
 panacek.style.left= '500px';
 panacek.style.top= '260px';
 
@@ -47,5 +47,123 @@ window.onload = function() {
 
 //ovládání panáčka
 
-//onkeydown="priStisknutiSipky(event)"
+//onkeydown="priStisknutiSipky(event)"*/
+
+//pokusy ze 4. hodiny
+
+/*let panacek, panacekX
+
+let mince = document.querySelector("mince")
+let panacek = document.querySelector("panacek")
+
+panacekX = 50;
+
+function priNacteníStranky() {
+
+	panacek.style.left=panacekX + 'px';
+	panacek.style.top='260px';
+}
+
+function umistiPanacka () {
+	panacek.style.left=panacekX + 'px';
+	panacek.style.top='260px';
+}
+
+function novaMince() {
+	mince.style.left=100 +"px";
+	mince.style.top=100+ "px";
+	console.log
+}
+
+function priStisknutiKlavesy(event) {
+
+if (event.key === "ArrowLeft") {
+panacekX -= 10
+console.log("do leva");
+console.log(panacekX);
+}
+
+else if (event.key==="ArrowDown") {
+	panacekX=panacekX+10;
+	panacek.style.left = panacekX + "px";
+}
+
+
+
+umistiPanacka();
+
+}
+
+function otestujKolizi() {
+	if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY)) {
+	}
+}*/
+
+//Pokus číslo 3
+
+let panacek, panacekX, panacekY, panacekSirka, panacekVyska
+let minnce, minceX, minceY, minceSirka, minceVyska
+
+
+function priNacteniStranky () {
+	panacekX = 420;
+	panacekY = 260;
+
+	panacek = document.getElementById("panacek");
+	mince =document.getElementById("mince");
+	console.log("priNacteniStranky");
+	console.log(panacekX);
+	umistiPanacka();
+	novaMince();
+}
+
+function umistiPanacka() {
+	panacek.style.left = panacekX + "px";
+	panacek.style.top = panacekY+ "px";
+	console.log("umistiPanacka");
+}
+
+function novaMince() {
+	mince.style.left=100 + "px";
+	mince.style.top =100 + "px";
+	console.log(novaMince)
+}
+
+function priStisknutiKlavesy(event) {
+	if (event.key === "ArrowLeft") {
+		panacekX = panacekX - 10;
+		panacek.style.left = panacekX + "px";
+		console.log("do leva");
+		console.log(panacekX);
+	}
+
+	if (event.key === "ArrowRight") {
+		panacekX = panacekX + 10;
+		panacek.style.left = panacekX + "px";
+		console.log("do prava");
+		console.log(panacekX);
+	}
+
+	if (event.key === "ArrowDown") {
+		panacekY = panacekY + 10;
+		panacek.style.top = panacekY+ "px";
+		console.log("dolu");
+		console.log(panacekY);
+	}
+
+
+	if (event.key === "ArrowUp") {
+		panacekY = panacekY - 10;
+		panacek.style.top = panacekY + "px";
+		console.log("nahoru");
+		console.log(panacekY);
+	}
+	umistiPanacka();
+}
+
+function otestujKolizi() {
+	!( 
+		panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY
+		)
+}
 
