@@ -124,9 +124,11 @@ function umistiPanacka() {
 }
 
 function novaMince() {
-	mince.style.left=100 + "px";
+	/*mince.style.left=100 + "px";
 	mince.style.top =100 + "px";
-	console.log(novaMince)
+	console.log(novaMince)*/
+	mince.style.left = Math.floor(Math.random()*1920) + "px";
+	mince.style.top = Math.floor(Math.random()* 1010) + "px";
 }
 
 function priStisknutiKlavesy(event) {
