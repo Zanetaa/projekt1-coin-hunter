@@ -169,8 +169,10 @@ function otestujKolizi() {
 		)
 }
 
+//panáček mi nechce chytit tu minci :(
+
 function PanacekChytneMinci() {
-if ((panacek.style.top === mince.style.top) && (panacek.style.left === mince.style.left)) {
+if ((panacek.style.top == mince.style.top) || (panacek.style.left == mince.style.left)) {
 	console.log("Panacek chytil minci");
 	let skore = document.getElementById("score")
 	skore = skore +1;
@@ -179,8 +181,15 @@ if ((panacek.style.top === mince.style.top) && (panacek.style.left === mince.sty
 }	
 }
 
+
+function skore(){
+	document.getElementsById("score").innerHTML= skore;
+	console.log(skore);
+}
+
+
 /*function Vitez()
-	if (skore=5)
+	if (skore = 5)
 	{
 		let vitez = document.getElementbyId('fanfara');
 		vitez.play();
