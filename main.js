@@ -5,7 +5,6 @@ if (!( panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || pan
 }
 */
 
-
 // sem začni psát svůj program
 
 //počáteční skóre
@@ -101,92 +100,126 @@ function otestujKolizi() {
 
 //Pokus číslo 3
 
-let panacek, panacekX, panacekY, panacekSirka, panacekVyska
-let minnce, minceX, minceY, minceSirka, minceVyska
+let panacek, panacekX, panacekY, panacekSirka, panacekVyska;
+let mince, minceX, minceY, minceSirka, minceVyska;
 
+let score;
 
-function priNacteniStranky () {
-	panacekX = 420;
-	panacekY = 260;
+function priNacteniStranky() {
+  panacekX = 420;
+  panacekY = 260;
 
-	panacek = document.getElementById("panacek");
-	mince =document.getElementById("mince");
-	console.log("priNacteniStranky");
-	console.log(panacekX);
-	umistiPanacka();
-	novaMince();
+  panacek = document.getElementById("panacek");
+  mince = document.getElementById("mince");
+
+  //šírka a výška potrebna pre zistenie kolízie
+  panacekSirka = panacek.width;
+  panacekVyska = panacek.height;
+
+  //šírka a výška potrebna pre zistenie kolízie
+  minceSirka = mince.width;
+  minceVyska = mince.height;
+
+  score = 0;
+
+  console.log("priNacteniStranky");
+  console.log(panacekX);
+  umistiPanacka();
+  novaMince();
 }
 
 function umistiPanacka() {
-	panacek.style.left = panacekX + "px";
-	panacek.style.top = panacekY+ "px";
-	console.log("umistiPanacka");
+  panacek.style.left = panacekX + "px";
+  panacek.style.top = panacekY + "px";
+  console.log("umistiPanacka");
 }
 
 function novaMince() {
-	/*mince.style.left=100 + "px";
+  /*mince.style.left=100 + "px";
 	mince.style.top =100 + "px";
 	console.log(novaMince)*/
-	mince.style.left = Math.floor(Math.random()*1920) + "px";
-	mince.style.top = Math.floor(Math.random()* 1010) + "px";
+  minceX = Math.floor(Math.random() * window.innerWidth);
+  minceY = Math.floor(Math.random() * window.innerHeight);
+  mince.style.left = minceX + "px";
+  mince.style.top = minceY + "px";
 }
 
 function priStisknutiKlavesy(event) {
-	if (event.key === "ArrowLeft") {
-		panacekX = panacekX - 10;
-		panacek.style.left = panacekX + "px";
-		console.log("do leva");
-		console.log(panacekX);
-	}
+  if (event.key === "ArrowLeft") {
+    panacekX = panacekX - 10;
+    panacek.style.left = panacekX + "px";
+    console.log("do leva");
+    console.log(panacekX);
+  }
 
-	if (event.key === "ArrowRight") {
-		panacekX = panacekX + 10;
-		panacek.style.left = panacekX + "px";
-		console.log("do prava");
-		console.log(panacekX);
-	}
+  if (event.key === "ArrowRight") {
+    panacekX = panacekX + 10;
+    panacek.style.left = panacekX + "px";
+    console.log("do prava");
+    console.log(panacekX);
+  }
 
-	if (event.key === "ArrowDown") {
-		panacekY = panacekY + 10;
-		panacek.style.top = panacekY+ "px";
-		console.log("dolu");
-		console.log(panacekY);
-	}
+  if (event.key === "ArrowDown") {
+    panacekY = panacekY + 10;
+    panacek.style.top = panacekY + "px";
+    console.log("dolu");
+    console.log(panacekY);
+  }
 
-
-	if (event.key === "ArrowUp") {
-		panacekY = panacekY - 10;
-		panacek.style.top = panacekY + "px";
-		console.log("nahoru");
-		console.log(panacekY);
-	}
-	umistiPanacka();
+  if (event.key === "ArrowUp") {
+    panacekY = panacekY - 10;
+    panacek.style.top = panacekY + "px";
+    console.log("nahoru");
+    console.log(panacekY);
+  }
+  otestujKolizi();
+  umistiPanacka();
 }
 
 function otestujKolizi() {
-	!( 
-		panacekX + panacekSirka < minceX || minceX + minceSirka < panacekX || panacekY + panacekVyska < minceY || minceY + minceVyska < panacekY
-		)
+	if (
+	  !(
+		panacekX + panacekSirka < minceX ||
+		minceX + minceSirka < panacekX ||
+		panacekY + panacekVyska < minceY ||
+		minceY + minceVyska < panacekY
+	  )
+	) {
+		score += 1;
+		document.querySelector('#score').innerHTML = score
+		novaMince();
+		if (score >= 3) {
+		  mince.src = 'obrazky/mince-stribrna.png'
+		}
+		if (score >= 5) {
+		  mince.src = 'obrazky/mince.png'
+		}
+		if (score == 5) {
+		  alert('Blahopřeji k výhře!')			
+	}
+  }
 }
 
 //panáček mi nechce chytit tu minci :(
 
-function PanacekChytneMinci() {
-if ((panacek.style.top == mince.style.top) || (panacek.style.left == mince.style.left)) {
-	console.log("Panacek chytil minci");
-	let skore = document.getElementById("score")
-	skore = skore +1;
+// function PanacekChytneMinci() {
+//   if (
+//     panacek.style.top == mince.style.top ||
+//     panacek.style.left == mince.style.left
+//   ) {
+//     console.log("Panacek chytil minci");
+//     let skore = document.getElementById("score");
+//     skore = skore + 1;
 
-	novaMince()
-}	
-}
+//     novaMince();
+//   }
+// }
 
-
-function skore(){
-	document.getElementsById("score").innerHTML= skore;
-	console.log(skore);
-}
-
+/*
+function skore() {
+  document.getElementsById("score").innerHTML = skore;
+  console.log(skore);
+}  */
 
 /*function Vitez()
 	if (skore = 5)
@@ -194,3 +227,8 @@ function skore(){
 		let vitez = document.getElementbyId('fanfara');
 		vitez.play();
 	}*/
+
+
+
+
+
